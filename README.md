@@ -462,30 +462,30 @@ docker compose up -d
 
 アクセスするとアカウント作成を求められるので作成する。
 
-<img src="./images/アカウント作成.png" alt="アカウント作成" height="40%">
+<img src="./images/アカウント作成.png" alt="アカウント作成" width="40%">
 
 アカウント作成後監視の追加をクリックして作成したwebサイト、Dockerコンテナを監視対象に設定する。
 
 webサイトは以下の画像のように設定する。
 
-<img src="./images/kumaapache.png" alt="webサイトの監視設定" height="50%">
+<img src="./images/kumaapache.png" alt="webサイトの監視設定" width="50%">
 
 
 通知設定をクリックして通知を送る方法を設定する。ここではDiscordのサーバーにwebフックで送信するように以下の画像のように設定し、保存する。
 
-<img src="./images/通知設定dis.png" alt="通知設定" height="50%">
+<img src="./images/通知設定dis.png" alt="通知設定" width="50%">
 
 保存をクリックし、保存する。成功すると以下の画像のようになる。
 
-<img src="./images/追加後.png" alt="追加後" height="50%">
+<img src="./images/追加後.png" alt="追加後" width="50%">
 
 Dockerコンテナは以下の画像のように設定する。複数のコンテナを1つずつ監視設定する。
 
-<img src="./images/kumadocker.png" alt="Dockerコンテナの監視設定" height="50%">
+<img src="./images/kumadocker.png" alt="Dockerコンテナの監視設定" width="50%">
 
 Dockerホストは以下の画像のように設定する。
 
-<img src="./images/dockerホスト設定.png" alt="Dockerホストの設定" height="50%">
+<img src="./images/dockerホスト設定.png" alt="Dockerホストの設定" width="50%">
 
 通知設定はもう一つDiscordのサーバーにwebフックを作成し、それに送信するように設定する。保存し、ステータスを確認する。
 
