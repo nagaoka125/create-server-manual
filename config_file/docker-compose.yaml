@@ -1,0 +1,50 @@
+services:
+  uptime-kuma:
+    # 最新版のUptime Kumaイメージを使用
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    # コンテナが停止した場合、常に再起動するように設定
+    restart: always
+    # ポート3001番を、コンテナ内部のポート3001番に接続
+    ports:
+      - "3001:3001"
+
+    volumes:
+      # Dockerデーモンと通信するためのソケットファイルをマウント
+      - /var/run/docker.sock:/var/run/docker.sock
+      # /path/to/dataディレクトリを、コンテナ内部の/app/dataにマウント (ホスト側のパスは適切なものに変更が必要)
+      - ./data:/app/data
+
+    environment:
+      # タイムゾーンを協定世界時に設定(変更可)
+      - TZ=UTC
+      # 作成されるファイルのパーミッションマスクを設定
+      - UMASK=0022
+    networks:
+      # kuma_networkというカスタムネットワークにコンテナを接続
+      - kuma_network
+    healthcheck:
+      # コンテナ内で 'curl' コマンドを実行し、ポート3001への接続をテスト
+      test: ["CMD", "curl", "-f", "http://localhost:3001"]
+      # ヘルスチェックの実行間隔を30秒に設定
+      interval: 30s
+      # ヘルスチェック失敗時の再試行回数を3回に設定
+      retries: 3
+      # コンテナ起動後、ヘルスチェックを有効にするまでの待機時間を10秒に設定
+      start_period: 10s
+      # ヘルスチェックのタイムアウト時間を5秒に設定
+      timeout: 5s
+    logging:
+      # ログドライバーとして json-fileを使用
+      driver: "json-file"
+      options:
+        # 1つのログファイルの最大サイズを10メガバイトに制限
+        max-size: "10m"
+        # 保持するログファイルの最大数を3つに制限
+        max-file: "3"
+
+networks:
+  # kuma_networkという名前のネットワークを定義
+  kuma_network:
+    # ネットワークドライバーとして 'bridge' を指定
+    driver: bridge

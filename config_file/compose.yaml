@@ -1,0 +1,28 @@
+services:
+# Webサーバ(Apache HTTPD)
+  web:
+    image: httpd:latest
+    # ホストの8080ポートをコンテナの80ポートにマッピング
+    ports:
+      - "8080:80"
+    # ホストの./htdocsディレクトリをコンテナの公開ディレクトリにマウント
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs/
+    # コンテナが停止した場合、常に再起動する
+    restart: always
+# データベース(MySQL 8.0)
+  db:
+    image: mysql:8.0
+    # 環境変数の設定 (データベースの初期化とrootパスワード)
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: mydb
+    # データを永続化するためのボリュームをマウント
+    volumes:
+      - db_data:/var/lib/mysql
+    # コンテナが停止した場合、常に再起動する
+    restart: always
+
+# データの永続化用ボリュームの定義
+volumes:
+  db_data:
