@@ -7,19 +7,19 @@
 1. 完成条件
 2. 前提条件
 3. 事前準備
-  3-1 WSLのインストール
-  3-2 Ubuntu24.04 LSTのインストールとアカウント設定
+    * 3-1 WSLのインストール
+    * 3-2 Ubuntu24.04 LSTのインストールとアカウント設定
 4. 構築手順
-  4-1 WSL起動と新しいユーザー作成
-  4-2 SSHのインストールと鍵認証設定
-  4-3 UFWを用いたファイアウォール設定
-  4-4 Apacheを用いたHTTPサーバ構築
-  4-5 DockerのインストールとDocker Composeを使用したコンテナ作成
-  4-6 Uptime-Kumaのインストールと設定
+    * 4-1 WSL起動と新しいユーザー作成
+    * 4-2 SSHのインストールと鍵認証設定
+    * 4-3 UFWを用いたファイアウォール設定
+    * 4-4 Apacheを用いたHTTPサーバ構築
+    * 4-5 DockerのインストールとDocker Composeを使用したコンテナ作成
+    * 4-6 Uptime-Kumaのインストールと設定
 5. 動作確認
-  5-1 疎通確認
-  5-2 ログ確認
-  5-3. ヘルスチェック (Uptime-Kumaによる監視)
+    * 5-1 疎通確認
+    * 5-2 ログ確認
+    * 5-3. ヘルスチェック (Uptime-Kumaによる監視)
 6. トラブルシューティング
 7. 参考資料
 
@@ -462,29 +462,30 @@ docker compose up -d
 
 アクセスするとアカウント作成を求められるので作成する。
 
-![アカウント作成](./images/アカウント作成.png)
+<img src="./images/アカウント作成.png" alt="アカウント作成" height="40%">
 
 アカウント作成後監視の追加をクリックして作成したwebサイト、Dockerコンテナを監視対象に設定する。
 
 webサイトは以下の画像のように設定する。
 
-![webサイトの監視設定](./images/kumaapache.png)
+<img src="./images/kumaapache.png" alt="webサイトの監視設定" height="50%">
+
 
 通知設定をクリックして通知を送る方法を設定する。ここではDiscordのサーバーにwebフックで送信するように以下の画像のように設定し、保存する。
 
-![通知設定](./images/通知設定dis.png)
+<img src="./images/通知設定dis.png" alt="通知設定" height="50%">
 
 保存をクリックし、保存する。成功すると以下の画像のようになる。
 
-![追加後](./images/追加後.png)
+<img src="./images/追加後.png" alt="追加後" height="50%">
 
 Dockerコンテナは以下の画像のように設定する。複数のコンテナを1つずつ監視設定する。
 
-![Dockerコンテナの監視設定](./images/kumadocker.png)
+<img src="./images/kumadocker.png" alt="Dockerコンテナの監視設定" height="50%">
 
 Dockerホストは以下の画像のように設定する。
 
-![Dockerホストの設定](./images/dockerホスト設定.png)
+<img src="./images/dockerホスト設定.png" alt="Dockerホストの設定" height="50%">
 
 通知設定はもう一つDiscordのサーバーにwebフックを作成し、それに送信するように設定する。保存し、ステータスを確認する。
 
